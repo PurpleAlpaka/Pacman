@@ -12,24 +12,28 @@ var gGame = {
     isOn: false,
     foodCount: 0,
     foodEaten: 0,
-    intervals: [] // [0] = ghostInterval, [1] = cherryInterval
+    intervals: [], // [0] = ghostInterval, [1] = cherryInterval, [2] = timerInterval
+    timePassedInSeconds: 0
 }
 
 function init() {
-    console.log('gGame', gGame)
     clearIntervals(gGame.intervals)
+    document.querySelector('.live-time-display span').innerText = 0
     document.querySelector('.modal').style.display = 'none'
     gGame.intervals = []
     gGame.score = 0
+    gGame.timePassedInSeconds = 0
     updateScore(0)
     gBoard = buildBoard()
     gGame.intervals[1] = setInterval(addCherry, 15000, gBoard)
+    gGame.intervals[2] = setInterval(countTime, 1000)
     createPacman(gBoard);
     gGame.foodCount = countFoodInBoard(gBoard)
     gGame.foodEaten = 0
     createGhosts(gBoard);
     printMat(gBoard, '.board-container')
     gGame.isOn = true
+
 }
 
 function buildBoard() {
@@ -56,13 +60,14 @@ function buildBoard() {
 function updateScore(diff) {
     // update model and dom
     gGame.score += diff;
-    document.querySelector('h2 span').innerText = gGame.score;
+    document.querySelector('.score-display span').innerText = gGame.score;
 }
 
 function gameOver(isWin) {
     const elModal = document.querySelector('.modal')
     elModal.style.display = 'block'
-    elModal.querySelector('h1 span').innerText = (isWin) ? 'You won!' : 'You lose :c'
+    elModal.querySelector('.game-over span').innerText = (isWin) ? 'won!' : 'lose 💀'
+    elModal.querySelector('.final-score span').innerText = gGame.score
     gGame.isOn = false;
     clearIntervals(gGame.intervals)
         // update the model
@@ -75,12 +80,9 @@ function countFoodInBoard(board) {
     var count = 0
     for (var i = 1; i < board.length - 1; i++) {
         for (var j = 1; j < board[0].length - 1; j++) {
-            var cell = board[i][j]
             if (board[i][j] === FOOD) count++
         }
     }
-    console.log('count', count)
-
     return count
 }
 

@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: black;
     color: white;
@@ -5,9 +9,17 @@ body {
 
 .board {
     margin: auto;
-    padding: auto;
+    /* padding: auto; */
     border-collapse: collapse;
-    background-color: rgba(0, 0, 255, 0.404);
+    /* border: 2px solid #fff; */
+    background-color: black
+}
+
+tr,
+td {
+    /* border: 1px solid #fff; */
+    padding: 0;
+    margin: 0;
 }
 
 .super-food {
@@ -18,9 +30,15 @@ body {
 }
 
 .wall {
-    width: 50px;
+    /* width: 50px;
+
     height: 47px;
-    background-image: url(../assets/Brick.png);
+    background: url(../assets/Brick.png);
+    background-size: cover; */
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/Brick.png');
+    background-repeat: repeat;
     background-size: contain;
 }
 
@@ -33,9 +51,9 @@ body {
 
 
 /* .formLine {
-  margin:10px;
-  padding:10px;
-  background-color: cornflowerblue;
+    margin: 10px;
+    padding: 10px;
+    background-color: cornflowerblue;
 } */
 
 .modal {
@@ -43,7 +61,7 @@ body {
     height: 50%;
     width: 50%;
     text-align: center;
-    background-color: rgba(92, 91, 104, 0.9);
+    background-color: #935240c9;
     border-radius: 10px;
     position: absolute;
     top: 23%;
@@ -78,4 +96,72 @@ span {
     width: 30px;
     background-image: url(../assets/pacman.png);
     background-size: contain;
+}
+
+.score-display,
+.live-time-display {
+    display: inline-block;
+    font-size: 2em;
+    font-weight: 700;
+    width: 6ch;
+    text-align: center;
+    border: 5px outset #935240c9;
+    background-color: #935240c9;
+    margin: auto;
+}
+
+.score-display {
+    position: absolute;
+    right: 5%;
+}
+
+.live-display {
+    margin: auto;
+    padding-bottom: 14%;
+}
+
+.live-time-display {
+    position: absolute;
+    left: 5%;
+    width: 7ch;
+    /* margin: auto; */
+}
+
+.modal-display {
+    position: relative;
+    height: 70%;
+    border-bottom: 1px solid black;
+}
+
+.game-over {
+    position: absolute;
+    height: 50%;
+    font-weight: 700;
+    font-size: 2.5rem;
+    vertical-align: center;
+    text-align: center;
+    /* padding-top: 20%; */
+    /* padding-bottom: 0; */
+    left: 40%;
+    top: 20%;
+}
+
+.final-score {
+    /* display: inline-block; */
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    font-size: 1.5rem;
+    width: 10ch;
+    line-height: 3rem;
+}
+
+.time-display {
+    /* display: inline-block; */
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    width: 10ch;
 }

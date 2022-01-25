@@ -35,3 +35,15 @@ function getRandomColor() {
     }
     return color;
 }
+
+function countTime() {
+    var display = ''
+    gGame.timePassedInSeconds++
+        if (gGame.timePassedInSeconds > 60) {
+            const seconds = ((gGame.timePassedInSeconds % 60) < 10) ? '0' + gGame.timePassedInSeconds % 60 : gGame.timePassedInSeconds % 60
+            display = parseInt(gGame.timePassedInSeconds / 60) + ' : ' + seconds
+        } else display = gGame.timePassedInSeconds
+            // document.querySelector('.live-time-display span').innerText = display
+    document.querySelector('.time-display span').innerText = display
+    document.querySelector('.live-time-display span').innerText = display
+}

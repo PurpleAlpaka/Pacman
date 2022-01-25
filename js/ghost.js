@@ -57,7 +57,7 @@ function moveGhost(ghost) {
     gBoard[ghost.location.i][ghost.location.j] = ghost.currCellContent
         // update the DOM
     renderCell(ghost.location, ghost.currCellContent)
-    if (gPacman.isSuper && nextCell === PACMAN) return
+        // if (gPacman.isSuper && nextCell === PACMAN) return
         // Move the ghost to new location
         // update the model
     ghost.location = {
@@ -95,7 +95,7 @@ function getMoveDiff() {
 //     }
 // }
 
-function getGhostIdxByLocation(location) {
+function getGhostIdx(location) {
     for (var i = 0; i < gGhosts.length; i++) {
         if (gGhosts[i].location.i === location.i &&
             gGhosts[i].location.j === location.j) {
@@ -126,10 +126,6 @@ function killGhost(ghostIdx) {
 }
 
 function reviveGhosts() {
-    // Works in console, dosen't work in code
-    // gGhosts.concat(gDeadGhosts)
-    // gDeadGhosts = []
-    for (var i = gDeadGhosts.length - 1; i >= 0; i--) {
-        gGhosts.push(gDeadGhosts.pop())
-    }
+    gGhosts.push(...gDeadGhosts)
+    gDeadGhosts = []
 }

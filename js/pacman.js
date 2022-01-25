@@ -36,7 +36,7 @@ function movePacman(ev) {
     const currCellContents = (gPacman.isStandingOnSuper) ? SUPER_FOOD : EMPTY
     gPacman.isStandingOnSuper = false
     if (nextCell === GHOST) {
-        if (gPacman.isSuper) killGhost(getGhostIdxByLocation(nextLocation))
+        if (gPacman.isSuper) killGhost(getGhostIdx(nextLocation))
         else return gameOver(false);
     } else if (nextCell === FOOD) {
         updateScore(1)
@@ -115,8 +115,6 @@ function getPacmanHTML(direction) {
 function togglePacmanAsSuper() {
     gPacman.isSuper = !gPacman.isSuper
     if (gPacman.isSuper) {
-        setTimeout(() => {
-            togglePacmanAsSuper()
-        }, 5000)
+        setTimeout(togglePacmanAsSuper, 5000)
     } else reviveGhosts()
 }
