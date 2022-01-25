@@ -41,8 +41,7 @@ function movePacman(ev) {
     } else if (nextCell === FOOD) {
         updateScore(1)
         gGame.foodEaten++
-            document.querySelector('h1 span').innerText = gGame.foodEaten
-        checkWin()
+            checkWin()
     } else if (nextCell === SUPER_FOOD) {
         if (!gPacman.isSuper) {
             updateScore(10)

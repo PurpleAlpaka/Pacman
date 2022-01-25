@@ -109,8 +109,5 @@ function clearIntervals(intervals) {
 }
 
 function checkWin() {
-    // console.log('gGame.foodEaten', gGame.foodEaten)
-    // console.log('gGame.foodCount', gGame.foodCount)
-
     if (gGame.foodEaten === gGame.foodCount) gameOver(true)
 }

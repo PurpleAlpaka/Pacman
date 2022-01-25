@@ -111,9 +111,6 @@ function killGhost(ghostIdx) {
             updateScore(1)
             gGame.foodEaten++;
             checkWin()
-            console.log('gGame.foodEaten', gGame.foodEaten)
-            console.log('gGame.foodCount', gGame.foodCount)
-
             break
         case CHERRY:
             updateScore(10)
